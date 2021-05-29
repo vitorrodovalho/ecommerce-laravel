@@ -30,12 +30,12 @@
                 </div> <!-- end top-nav -->
                 <div class="hero container">
                     <div class="hero-copy">
-                        <h1>Laravel Ecommerce Demo</h1>
-                        <p>Includes multiple products, categories, a shopping cart and a checkout system with Stripe integration.</p>
+                        <h1>Tudo em Eletrônicos</h1>
+                        <p>Eletrônicos com o melhor preço e frete grátis para qualquer região do Brasil.</p>
                     </div> <!-- end hero-copy -->
 
                     <div class="hero-image">
-                        <img src="img/macbook-pro-laravel.png" alt="hero image">
+                        <img src="img/macbook.png" alt="hero image">
                     </div> <!-- end hero-image -->
                 </div> <!-- end hero -->
             </header>
@@ -43,10 +43,10 @@
             <div class="featured-section">
 
                 <div class="container">
-                    <h1 class="text-center">Laravel Ecommerce</h1>
-
+                    <h1 class="text-center">Destaque</h1>
+                    <!--
                     <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore vitae nisi, consequuntur illum dolores cumque pariatur quis provident deleniti nesciunt officia est reprehenderit sunt aliquid possimus temporibus enim eum hic lorem.</p>
-
+                    -->
                     <div class="products text-center">
                         @foreach ($products as $product)
                             <div class="product">
