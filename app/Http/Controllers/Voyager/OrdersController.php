@@ -3,14 +3,10 @@
 namespace App\Http\Controllers\Voyager;
 
 use App\Order;
+use Illuminate\Support\Facades\DB;
 use Validator;
-use App\Product;
-use App\Category;
-use App\CategoryProduct;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Events\BreadDataAdded;
-use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 class OrdersController extends VoyagerBaseController
@@ -24,10 +20,11 @@ class OrdersController extends VoyagerBaseController
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
 
-        $relationships = $this->getRelationships($dataType);
+        //$relationships = $this->getRelationships($dataType);
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
-            $dataTypeContent = call_user_func([$model->with($relationships), 'findOrFail'], $id);
+            //$dataTypeContent = call_user_func([$model->with($relationships), 'findOrFail'], $id);
+            $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
         } else {
             // If Model doest exist, get data from table name
             $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
@@ -40,7 +37,7 @@ class OrdersController extends VoyagerBaseController
         $this->removeRelationshipField($dataType, 'read');
 
         // Check permission
-        $this->authorize('read', $dataTypeContent);
+        //$this->authorize('read', $dataTypeContent);
 
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
