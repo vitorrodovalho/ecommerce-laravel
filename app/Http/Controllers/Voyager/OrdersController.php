@@ -20,6 +20,7 @@ class OrdersController extends VoyagerBaseController
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
 
+        /*
         //$relationships = $this->getRelationships($dataType);
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
@@ -28,7 +29,8 @@ class OrdersController extends VoyagerBaseController
         } else {
             // If Model doest exist, get data from table name
             $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
-        }
+        }*/
+        $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
 
         // Replace relationships' keys for labels and create READ links if a slug is provided.
         $dataTypeContent = $this->resolveRelations($dataTypeContent, $dataType, true);
